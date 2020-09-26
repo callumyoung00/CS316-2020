@@ -42,7 +42,8 @@ import qualified Prelude as P
    complete. -}
 
 concatLists :: [[x]] -> [x]
-concatLists = undefined
+concatLists []     = []
+concatLists (x:xs) = x ++ concatLists xs
 
 {- It may help to think concretely:
 
@@ -76,7 +77,9 @@ concatLists = undefined
 -}
 
 consAll :: a -> [[a]] -> [[a]]
-consAll = undefined
+consAll n []     = []
+consAll n [[]]   = [[n]]
+consAll n (x:xs) = (n:x) : consAll n xs
 
 {- 2 MARKS -}
 
@@ -103,7 +106,7 @@ splitOn :: Eq a => a -> [a] -> [[a]]
 splitOn splitChar xs = splitOnHelper splitChar [] xs
 
 splitOnHelper :: Eq a => a -> [a] -> [a] -> [[a]]
-splitOnHelper = undefined
+splitOnHelper = undefined 
 
 {- HINT: 'splitOnHelper' works by gathering elements of the input list
    'xs' in 'groups' until it sees an occurence of the splitting
